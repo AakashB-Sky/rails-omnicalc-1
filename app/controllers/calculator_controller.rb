@@ -35,7 +35,7 @@ class CalculatorController < ApplicationController
     years = params.fetch("user_years").to_f
     principal = params.fetch("user_principal").to_f
 
-    monthly_rate = apr / 12
+    monthly_rate = apr / 100 / 12
     loan_months = years * 12
 
     monthly_pmt = principal * (monthly_rate * (1 + monthly_rate) ** loan_months) / (((1 + monthly_rate) ** loan_months) - 1)
