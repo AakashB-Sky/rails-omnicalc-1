@@ -47,4 +47,13 @@ class CalculatorController < ApplicationController
 
     render({ :template => "calculator_templates/payment_results" })
   end
+
+  # random number ----------------------------------------------------------------
+  def random_new
+    render({ :template => "calculator_templates/random_new" })
+  end
+
+  def random_results
+    render({ :template => "calculator_templates/random_results" })
+  end
 end
