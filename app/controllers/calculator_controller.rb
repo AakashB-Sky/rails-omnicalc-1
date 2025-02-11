@@ -18,4 +18,10 @@ class CalculatorController < ApplicationController
   def square_root_new
     render({ :template => "calculator_templates/square_root_new" })
   end
+
+  def square_root_results
+    @num = params.fetch("number").to_f
+    @num_sq_rt = @num ** 0.5
+    render({ :template => "calculator_templates/square_root_results" })
+  end
 end
