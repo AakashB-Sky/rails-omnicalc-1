@@ -31,6 +31,20 @@ class CalculatorController < ApplicationController
   end
 
   def payment_results
+    apr = params.fetch("user_apr").to_f
+    years = params.fetch("user_years").to_f
+    principal = params.fetch("user_principal").to_f
+
+    monthly_rate = apr / 12
+    loan_months = years * 12
+
+    monthly_pmt = principal * (monthly_rate * (1 + monthly_rate) ** loan_months) / (((1 + monthly_rate) ** loan_months) - 1)
+    monthly_pmt = monthly_pmt.round(2)
+  
+    # format principal and monthly_pmt. Got this code from ChatGPT
+    @formatted_principal = "$#{format('%.2f', principal).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
+    @formatted_monthly_pmt = "$#{format('%.2f', monthly_pmt).reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
+
     render({ :template => "calculator_templates/payment_results" })
   end
 end
