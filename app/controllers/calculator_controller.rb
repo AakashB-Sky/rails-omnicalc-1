@@ -4,7 +4,7 @@ class CalculatorController < ApplicationController
   end
 
   
-  def square
-    render({ :template => "calculator_templates/square" })
+  def square_new
+    render({ :template => "calculator_templates/square_new" })
   end
 end
