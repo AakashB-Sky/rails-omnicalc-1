@@ -24,4 +24,13 @@ class CalculatorController < ApplicationController
     @num_sq_rt = @num ** 0.5
     render({ :template => "calculator_templates/square_root_results" })
   end
+
+  # monthly payment --------------------------------------------------------------
+  def payment_new
+    render({ :template => "calculator_templates/payment_new" })
+  end
+
+  def payment_results
+    render({ :template => "calculator_templates/payment_results" })
+  end
 end
